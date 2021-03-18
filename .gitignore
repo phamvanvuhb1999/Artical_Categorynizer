@@ -2,3 +2,4 @@ node_modules/
 package-lock.json
 *.txt
 *.h5
+orther_python_tool

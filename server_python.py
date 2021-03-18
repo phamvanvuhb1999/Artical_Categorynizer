@@ -212,7 +212,9 @@ def check_newspaper(url):
     crawled_string = crawl(str(url))
     #transfor to input data to server_python for test
     list_words = word_tokenize(xoa_cac_dau_thua(chuan_hoa_dau_cau_tieng_viet(convert_unicode(crawled_string))))
+    print(list_words)
     array = transform_to_input(list_words)
+    print(array)
     #predict
     result = predict_category(array)
     #return result v0.1

@@ -13,18 +13,20 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/', function(req, res) {
     res.render('index.pug')
-})
+});
 
 app.post('/', function(req, res) {
     var url = req.body.url.trim();
+    console.log("url: " + url)
     engine.engine(url, function(result) {
+        console.log("Render back to index, with result " + result)
         res.render('index.pug', {
             list_percent: result,
             old_url: url
         })
     })
-})
+});
 
 app.listen(port, function() {
     console.log("Server is running on port " + port)
-})
+});

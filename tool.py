@@ -10,7 +10,7 @@ server_address = ((host, port))
 stream_socket.connect(server_address)
 # Send data 
 #default input
-message = b'https://vnexpress.net/vo-phong-tuyen-vaccine-chau-au-hung-song-covid-19-thu-ba-4250103.html'
+message = b'https://vnexpress.net/solskjaer-cac-giai-cup-doi-khi-chi-the-hien-cai-toi-cua-hlv-4250217.html'
 if len(sys.argv) > 1:
 	temp = bytearray()
 	temp1 = sys.argv[1]
