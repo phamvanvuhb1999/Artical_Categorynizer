@@ -1,5 +1,7 @@
 import socket
 import sys 
+
+
 # Create a TCP/IP socket 
 stream_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
 host = 'localhost' 
@@ -8,7 +10,7 @@ server_address = ((host, port))
 stream_socket.connect(server_address)
 # Send data 
 #default input
-message = b'https:/afafahfaf/int.afaf.html'
+message = b'https://vnexpress.net/vo-phong-tuyen-vaccine-chau-au-hung-song-covid-19-thu-ba-4250103.html'
 if len(sys.argv) > 1:
 	temp = bytearray()
 	temp1 = sys.argv[1]
@@ -18,6 +20,6 @@ if len(sys.argv) > 1:
   
 stream_socket.sendall(message) 
 # response 
-data = stream_socket.recv(40) 
+data = stream_socket.recv(60) 
 print(data.decode(encoding="UTF-8")) 
 stream_socket.close()
