@@ -1,0 +1,61 @@
+html
+    head
+        link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css", integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK", crossorigin="anonymous")
+    
+    script.
+        var Chart = require('chart.js');
+        if list_percent: 
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+                ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+                ],
+            borderWidth: 1
+            }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+    
+    body
+        h1.mt-2.d-flex.justify-content-center Trang dự đoán thể loại báo
+        
+        form.form-inline.ml-5.mr-5.rounded
+            .form-group.mb-2
+                .font-weight-bold(for='url') Nhập Url:
+                input(style={"padding-left": "30px"})#name(placeholder=" Nhập đường dẫn đến bài báo cần kiểm tra.", name='url',type='text', value=old_url).rounded.mb-2.form-control-plaintext
+                button.btn.btn-primary.mb-2(type='submit') Enter
+        if old_url: 
+            a(href=old_url)=old_url
+
+        canvas#myChart(width='400' height='400')
+        div.flex-box
+            //a.btn.btn-primary.mb-5.ml-5(href="/") back
+
+
