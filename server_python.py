@@ -196,6 +196,7 @@ def transform_to_input(list_words):
             else:
                 arrayy.append(0)
     arrayy = np.array(arrayy)
+    arrayy.reshape(arrayy.shape[0])
     return arrayy
 
 def predict_category(input_array):
@@ -207,6 +208,8 @@ def predict_category(input_array):
     return result[0]
 
 def _float(num):
+    if num <= 0.0001:
+        num = 0.0001
     log10 = -int(math.log10(num))
     res = round(num, log10+2)
     if res <= 0.001:
