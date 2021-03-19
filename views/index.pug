@@ -1,19 +1,42 @@
 html
     head
         link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css", integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK", crossorigin="anonymous")
-    
-    
+        
+
     body
         h1.mt-2.d-flex.justify-content-center Trang dự đoán thể loại báo
         
         form(action="/", method="POST").form-inline.ml-5.mr-5.rounded
             .form-group.mb-2
                 .font-weight-bold(for='url') Nhập Url:
-                input(style={"padding-left": "30px"}, placeholder="Nhập đường dẫn đến bài báo cần kiểm tra.", name='url',type='text', value=old_url)#name.rounded.mb-2.form-control-plaintext
+                input(style={"padding-left": "30px"}, placeholder="Nhập đường dẫn đến bài báo cần kiểm tra.", name='url',type='text')#name.rounded.mb-2.form-control-plaintext
                 button.btn.btn-primary.mb-2(type='submit') Enter
         if old_url
             a(href=old_url).mb-2.ml-5=old_url
+        p.ml-5 doi-song | du-lich | giai-tri | giao-duc | kinh-doanh | phap-luat | suc-khoe | the-gioi | the-thao | thoi-su
+        if list_percent
+            p.ml-5=JSON.stringify(list_percent)
 
-        canvas#myChart(width='400' height='400')
+        canvas#myChart(width='600' height='600')
+
+    script(type='text/javascript' src='https://www.gstatic.com/charts/loader.js')
+    script(type='text/javascript').
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+        ['Task', 'Hours per Day'],
+        ['Work', 8],
+        ['Eat', 2],
+        ['TV', 4],
+        ['Gym', 2],
+        ['Sleep', 8]
+        ]);
+        console.log("redering")
+        var options = {'title':'Categorinizer', 'width':550, 'height':400};
+        var chart = new google.visualization.PieChart(document.getElementById('myChart'));
+        chart.draw(data, options);
+        console.log("Done")
+        }
 
 

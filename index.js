@@ -19,9 +19,17 @@ app.post('/', function(req, res) {
     var url = req.body.url.trim();
     console.log("url: " + url)
     engine.engine(url, function(result) {
+        //string to array percent
+        result_array = [];
+        array_percent = result.split("_")
+        for (i in array_percent) {
+            result_array.push(parseFloat(array_percent[i]))
+        }
+
         console.log("Render back to index, with result " + result)
+        console.log(JSON.stringify(result_array))
         res.render('index.pug', {
-            list_percent: result,
+            list_percent: result_array,
             old_url: url
         })
     })

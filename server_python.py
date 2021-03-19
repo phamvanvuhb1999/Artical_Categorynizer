@@ -8,6 +8,7 @@ from underthesea import word_tokenize
 import tensorflow as td
 from tensorflow import keras
 import numpy as np
+import math
 
 #variable for pre-vietnamese word process
 INPUT_SIZE = 256
@@ -205,6 +206,13 @@ def predict_category(input_array):
     result = model.predict(input_array)
     return result[0]
 
+def _float(num):
+    log10 = -int(math.log10(num))
+    res = round(num, log10+2)
+    if res <= 0.001:
+        return 0.001
+    return res
+
 def check_newspaper(url):
     url = re.sub("['*']"," ", url)
     url = url.strip()[2:]
@@ -224,7 +232,7 @@ def check_newspaper(url):
 def get_result_test(array):
     string = ""
     for i in range(len(array)):
-        string = string + str(round(float(array[i]),3))
+        string = string + str(_float(float(array[i])))
         if i < len(array) - 1:
             string = string + "_"
     return string

@@ -20,6 +20,6 @@ if len(sys.argv) > 1:
   
 stream_socket.sendall(message) 
 # response 
-data = stream_socket.recv(60) 
+data = stream_socket.recv(100) 
 print(data.decode(encoding="UTF-8")) 
 stream_socket.close()
